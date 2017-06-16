@@ -4,15 +4,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { BugModule } from './bugs/bug.module';
 
 import { AppComponent } from './components/app/app.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
     imports: [
         BrowserModule,
         BugModule,
-        AppRoutingModule
+        AppRoutingModule,
     ],
     declarations: [
-        AppComponent
+        AppComponent,
+        NavbarComponent
     ],
     bootstrap: [
         AppComponent
