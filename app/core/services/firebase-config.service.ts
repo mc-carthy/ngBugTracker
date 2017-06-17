@@ -8,7 +8,7 @@ import { FIREBASE_CONFIG } from './../constants/constants';
 @Injectable()
 export class FirebaseConfigService {
 
-    private database: firebase.database.Database;
+    database: firebase.database.Database;
 
     constructor() {
         this.configureApp();
