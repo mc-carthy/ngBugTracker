@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import * as firebase from 'firebase';
-require('firebase/databse');
+require('firebase/database');
 
 import { FIREBASE_CONFIG } from './../constants/constants';
 
