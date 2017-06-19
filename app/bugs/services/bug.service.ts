@@ -26,6 +26,20 @@ export class BugService {
         })
     }
 
+    changedListener(): Observable<any>
+    {
+        return Observable.create(obs => {
+            this.bugsDbRef.on('child_changed', bug => {
+                const updatedBug = bug.val() as Bug;
+                updatedBug.id = bug.key;
+                obs.next(updatedBug);
+            },
+            err => {
+                obs.throw (err);
+            });
+        });
+    }
+
     addBug(bug: Bug)
     {
         const newBugRef = this.bugsDbRef.push();
