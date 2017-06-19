@@ -58,18 +58,31 @@ export class BugDetailComponent implements OnInit {
 
     submitForm()
     {
-        console.log(this.bugForm); // TODO - Remove
-        this.addBug();
-    }
-
-    addBug()
-    {
         this.currentBug.title = this.bugForm.value["title"];
         this.currentBug.status = this.bugForm.value["status"];
         this.currentBug.severity = this.bugForm.value["severity"];
         this.currentBug.description = this.bugForm.value["description"];
-        this.bugService.addBug(this.currentBug);
+        
+        if (this.currentBug.id)
+        {
+            this.updateBug();
+        }
+        else
+        {
+            this.addBug();
+        }
+
         this.clearForm();
+    }
+
+    addBug()
+    {
+        this.bugService.addBug(this.currentBug);
+    }
+
+    updateBug()
+    {
+        this.bugService.updateBug(this.currentBug);
     }
 
     clearForm()
