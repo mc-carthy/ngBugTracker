@@ -19,7 +19,7 @@ export class BugDetailComponent implements OnInit {
 
     private modalId = "bug-modal";
     private bugForm: FormGroup;
-    @Input() currentBug= new Bug(null, null, null, null, null, null, null, null, null);
+    @Input() currentBug= new Bug(null, null, 1, 1, null, null, null, null, null);
 
     constructor(
         private formBuilder: FormBuilder,
@@ -31,20 +31,18 @@ export class BugDetailComponent implements OnInit {
         this.configureForm();
     }
 
-    configureForm()
+    configureForm(bug?: Bug)
     {
-        // this.bugForm = new FormGroup({
-        //     title: new FormControl(null, [ Validators.required, forbiddenStringValidator(/password/i) ]),
-        //     status: new FormControl(1, Validators.required),
-        //     severity: new FormControl(1, Validators.required),
-        //     description: new FormControl(null, Validators.required)
-        // });
+        if (bug)
+        {
+            this.currentBug = bug;
+        }
 
         this.bugForm = this.formBuilder.group({
-            title: [null, [Validators.required, forbiddenStringValidator(/password/i)]],
-            status: [1, Validators.required],
-            severity: [1, Validators.required],
-            description: [null, Validators.required],
+            title: [this.currentBug.title, [Validators.required, forbiddenStringValidator(/password/i)]],
+            status: [this.currentBug.status, Validators.required],
+            severity: [this.currentBug.severity, Validators.required],
+            description: [this.currentBug.description, Validators.required],
         });
     }
 
@@ -70,6 +68,12 @@ export class BugDetailComponent implements OnInit {
             status: 1,
             severity: 1
         });
+        this.cleanBug();
+    }
+
+    cleanBug()
+    {
+        this.currentBug = new Bug(null, null, 1, 1, null, null, null, null, null);
     }
 
 }
