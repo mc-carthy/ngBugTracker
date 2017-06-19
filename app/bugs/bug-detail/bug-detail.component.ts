@@ -35,7 +35,17 @@ export class BugDetailComponent implements OnInit {
     {
         if (bug)
         {
-            this.currentBug = bug;
+            this.currentBug = new Bug(
+                bug.id,
+                bug.title,
+                bug.status,
+                bug.severity,
+                bug.description,
+                bug.createdBy,
+                bug.createdDate,
+                bug.updatedBy,
+                bug.updatedDate
+            );
         }
 
         this.bugForm = this.formBuilder.group({
