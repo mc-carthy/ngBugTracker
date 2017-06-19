@@ -2,7 +2,7 @@ export class Bug
 {
     constructor
     (
-        public id: number,
+        public id: string,
         public title: string,
         public status: number,
         public severity: number,
@@ -10,7 +10,7 @@ export class Bug
         public createdBy: string,
         public createdDate: number,
         public updatedBy?: string,
-        public updatedAt?: number
+        public updatedDate?: number
     )
     {
 
